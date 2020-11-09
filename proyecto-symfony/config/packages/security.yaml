@@ -1,0 +1,59 @@
+security:
+    encoders: 
+        App\Entity\User:
+            algorithm: bcrypt
+            cost: 4
+            
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers: 
+        users_in_memory: { memory: null }
+        proveedor: 
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            form_login:
+                login_path: login
+                check_path: login
+                provider: proveedor
+            logout: 
+                path: /logout
+                target: /
+                    
+            
+            lazy: true
+            provider: users_in_memory
+            
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # CONTROL DE ACCESO RUTAS DE TAREAS 
+        - { path: ^/todas_las_tareas/, roles: ROLE_USER }
+        - { path: ^/avance_tareas/, roles: ROLE_USER }
+        - { path: ^/búsquedatarea/, roles: ROLE_USER }
+        - { path: ^/avanzar_pagina_busquedaportitulo/, roles: ROLE_USER }
+        - { path: ^/buscar_tarea_por_titulo/, roles: ROLE_USER }
+        - { path: ^/detalle_tarea/, roles: ROLE_USER }
+        - { path: ^/crear_tarea/, roles: ROLE_USER }
+        - { path: ^/editar_tarea/, roles: ROLE_USER }
+        - { path: ^/borrar_tarea/, roles: ROLE_USER }
+        
+        ##CONTROL DE ACCESO RUTAS DE USUARIO  
+        - { path: ^/detalle_usuario/, roles: ROLE_USER }
+        - { path: ^/modificar_usuario/, roles: ROLE_USER }
+        - { path: ^/dardebaja/, roles: ROLE_USER }
+        - { path: ^/frase_seguridadtemporal/, roles: ROLE_ADMIN }
+        
+        
+        

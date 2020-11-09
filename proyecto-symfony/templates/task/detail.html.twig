@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DETALLE DE TAREA {{task.title}}{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+        
+        <h2>DETALLE DE LA TAREA {{task.title}}</h2>
+        
+               
+        <p class="data-task">
+            <p class="data-task">Creador de la tarea:{{task.user.name ~'  '~ task.user.surname}} </p> 
+            <p class="data-task">Tarea creada: {{task.createdAt|date('d/m/yy H:i')}} Horas </p> 
+            <p class="data-task">Prioridad: {%if task.priority == 'high'%}
+                            Alta
+                          {% endif%}
+                          {%if task.priority == 'medium'%}
+                            Media
+                          {% endif%}
+                          {%if task.priority == 'low'%}
+                            Baja
+                          {% endif%} 
+            </p>              
+            <p class="data-task">
+                Horas previstas {{task.hours}} H 
+            </p> 
+            {%if task.acabada == 'SI' %}
+                <h5 class="mensajeflash">TAREA ACABADA</h5>
+            
+            {%endif %}
+            
+            {%if app.user.name == task.user.name%}
+            
+                {#CASUISTICAS SEGUN LA FECHA PREVISTA Y LA FECHA DE HOY#}
+
+                {#SI LA FECHA DE PREVISION DE LA TAREA YA HA PASADO(SI ME HA COGIDO EL TORO) #}    
+                {% if fechatarea < fechadehoy and task.acabada== 'NO' and dias !=0 %}
+                    <p class="plazotareavencido">¡¡TAREA FUERA DE PLAZO,LA DEBERÍAS HABER FINALIZADO EL DIA {{task.fechafin}}</p>
+                {%endif%}
+
+                {# SI LA TAREA ESTA PREVISTA PARA EL DIA DE HOY AVISAMOS QUE ESTA PREVISTA ACABAR HOY#}
+                {% if fechatarea < fechadehoy  and task.acabada=='NO' and dias==0 %}
+                    <p class="plazotareavencido">TENIAS PREVISTO FINALIZAR LA TAREA HOY</p>
+                {%endif%}
+                {# SI AUN NO HA PASADO LA FECHA PREVISTA ME RECUERDA CUANDO TENGO PREVISTA ACABARLA#}
+
+                {% if fechatarea > fechadehoy  and task.acabada=='NO'%}
+                    <p class="data-task">
+                        Tienes previsto acabar esta tarea para el dia {{task.fechafin}} 
+                    </p>
+                    {%if dias==1 %}
+                        <h5 class="plazotareavencido">TE QUEDA PARA FINALIZAR ESTA TAREA:
+                    {%else%}        
+                        <h5 class="data-task">PLAZO MARCADO PARA FINALIZAR ESTA TAREA:
+                    {%endif%}        
+                            {%if ano != 0 %} 
+                                {% if ano ==1 %}
+                                    {{ano}} año
+                                {% else %}
+                                    {{ano}} años
+                                {%endif%}    
+                            {%endif%}
+
+                            {% if meses!= 0%}
+                                {% if meses ==1 %}
+                                    {{meses}} mes
+                                {% else %}
+                                    {{meses}} meses
+                                {%endif%}    
+
+                            {%endif%}
+
+                            {% if dias!=0 %}
+                                {% if dias ==1 %}
+                                    {{dias}} dia
+                                {% else %}
+                                    {{dias}} dias
+                                {%endif%}   
+
+                            {% else %} 
+                                {% if horas !=0 %}
+                                      {%if horas ==1 %}
+                                           {{horas}} hora  
+                                      {%else%}
+                                           {{horas}} horas     
+                                      {% endif%}    
+                                {%endif%}   
+                            {%endif%}
+                        </h5>
+                {%endif %}
+                {# SI ESTAMOS EN EL MISMO DIA DE LA FECHA PREVISTA PARA FINALIZAR LA TAREA #}
+
+            {%endif%}    
+        </p>
+            
+        <h3>CONTENIDO DE LA TAREA</h3>
+        <p id="contenidotarea">{{task.content}}</p>
+        
+        <a class="tareas-acabadas" href="{{path('tasks',{'tareasacabadas':task.acabada,'ente':'particular'})}}">Volver a mis tareas</a>
+        {%if task.user.enterprise!=''%}
+            <a class="tareas-acabadas" href="{{path('tasks',{'tareasacabadas':task.acabada,'ente':'empresa'})}}">Volver a tareas de mi empresa </a>
+        {%endif%}    
+        
+    </div>
+{% endblock %}
+
+

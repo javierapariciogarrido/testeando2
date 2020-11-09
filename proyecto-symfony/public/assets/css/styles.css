@@ -1,0 +1,2766 @@
+
+body{
+    /*background-color: #f4a460;*/  
+    padding:0;
+    margin:0px;
+    background-image: url('../img/cuaderno.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    overflow-x: hidden;  /*CON ESTO QUITAMOS UN SCROLL HORIZONTAL INNECESARIO QUE LA WEB TIENE  */ 
+}
+body ul{
+    list-style: none;
+    background-color: red;
+    color:white;
+    width: 50%;
+    padding:5px;
+    border-radius:5px;
+    text-align: center;
+}
+
+/*CONTENEDOR PRINCIPAL DE TODA LA WEB */
+.container{
+
+}
+
+.example-wrapper{
+    /*height: 700px;*/
+    /*min-height: 700px;*/
+    margin:1em auto;
+    max-width: 60%;
+    font:18px/1.5 sans-serif;
+    min-height:100vh; /*Tendra como minimo el 100% de la altura del viewport height*/  
+    
+}
+
+.example-wrapper code{
+    background: #F5F5F5;
+    padding:2px 6px;
+}
+
+#header{
+    margin:2em auto;
+    max-width: 75%;
+    width: 90%;
+    font:18px/1.5 sans-serif;
+}
+h2,h3,p{
+    text-align: center;
+}
+
+
+
+/* ESTILOS MENSAJE DE BIENVENIDA EN LA PORTADA */
+#Bienvenida1{
+    opacity: 0;
+    width: 100%;
+    font-size:16px;
+}
+
+
+
+#titulo{
+    display: none;
+    text-align: center;
+    /*width:auto;*/
+    text-shadow: 4px 3px 3px black,3px 2px 2px black,2px 1px 1px black,1px 0px 0px black;
+    font-size:64px;
+    margin:2%;    
+
+}
+#titulo a{
+    text-decoration: none;
+    color:#C89C70;
+}
+
+#menu{
+    list-style: none;
+    margin-left:1%;
+    padding:0px;
+    height: 50px;
+    line-height: 50px;
+    width:100%; 
+    /*background-color: #ccc; */
+    background-color: black;
+    font-weight: bold;
+
+}
+
+/*Margen izquierdo de la opcion MIS TAREAS del  menu principal */
+#menu #mistareas{
+    margin-left:5px;
+}
+#menu li{
+    display:block;
+    float:left;
+    padding-left:1%;
+    padding-right: 1%;
+    border-right: 2px solid #C89C70;
+    cursor: pointer;
+    font-size: 22px;
+    transition: all 300ms;
+
+}
+
+#menu li:hover{
+    /*background-color: #444; */
+    background-color:#C89C70;
+
+
+}
+
+#nombreusuario{
+    font-size: 24px;
+    color:green;
+    font-weight: bold;
+    text-align: center;
+    border-right:0px;
+    transition:all 300ms;
+    text-shadow:4px 4px 3px black,3px 3px 2px black,2px 2px 1px black,1px 1px 0px black;
+    text-transform: uppercase;
+}
+.right:hover{
+    background-color:transparent !important;
+    cursor:default !important;
+}
+
+
+#menu a{
+    display: block;
+    text-decoration: none;
+    /*color:#444;*/
+    color:#C89C70;
+    transition:all 300ms;
+}
+
+
+#menu li:hover a{
+    color:black;
+}
+
+#menu #ayuda{
+    color:#C89C70;
+}
+
+
+label{
+    display: block;
+    width: 80%;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select,
+textarea{
+    width: 50%;
+    padding:8px;
+}
+
+button,
+input[type="submit"]{
+    padding: 8px;
+    margin-top: 15px;
+    margin-bottom: 3%;
+    background-color: #00AA33;
+    color:white;
+    border:2px solid #024917;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+button:hover,
+input[type="submit"]:hover{
+    background-color: #024917;
+}
+
+.clearfix{
+    clear:both;
+    float:none;
+}
+
+#menu #cerrarsesion {
+    color:#C89C70;
+    margin:0px;
+    margin-left:0%;
+    border-right: 0px;
+}
+
+#menu #cerrarsesion:hover {
+    background-color: red;
+    color:white;
+}
+
+/*ESTILOS DE LA TABLA */
+
+table{
+    width:120%;
+    margin-bottom:30px;
+    table-layout:fixed; /*PARA PODER ESTABLECER TAMAÃ‘OS CELDAS LE PONGO FIXED*/
+}
+/*ESTILOS DE LAS COLUMNAS DE LA TABLA*/
+/*COLUMNA TAREA*/
+table .tarea{
+    width:50%;
+}
+/*COLUMNA PRIORIDAD*/
+table .prioridad{
+    width: 10%;
+}
+/*COLUMNA HORAS*/
+table .horas {
+    width:8%;
+}
+/*COLUMNA PREVISTO FINALIZAR*/
+.previstofinalizar{
+    width: 15%;
+}
+/*COLUMNA ACCIONES*/
+table .acciones{
+    width: 25%;
+}
+
+/*establezco las celdas para que no sobresalga contenido y para que si es mas largo que celda 
+haga un salto de linea*/
+table td{
+    /*overflow: hidden;*/
+    /*white-space: normal;*/
+}
+
+table th,
+table td{
+    padding:1%;
+    border-bottom: 2px solid #ccc;
+    text-align: center;
+}
+
+table tr{
+    background-color: #e9ffea;
+}
+
+/*ESTA CLASE ES PARA MARCAR CON COLOR ROJO CUANDO LA FECHA PREVISTA DE ACABAR LA TAREA HA PASADO*/
+.fecharoja{
+    color:red;
+}
+/*ESTILOS DE LOS BOTONES DE A TABLA*/
+.buttons{
+    /*width:35%;*/
+
+}
+
+/*BOTONES DE VER EDITAR Y BORRAR DE LAS ACCIONES DE LA TABLA*/
+.buttons a{
+    text-decoration:none;
+    padding:4%;
+    color:white;
+}
+.btn-show{
+    display:inline-block;
+    border:1px solid #0d300d;
+    background-color: #00AA33;
+    /*width:14%;*/
+    margin-right: 1%;
+
+}
+.btn-edit{
+    display:inline-block;
+    /*width:20%;*/
+    border:1px solid #fc6900;
+    background-color: orange;
+}
+
+#btn-delete{
+    /*width:43%;*/
+    height:10%;
+    padding:5.5%;
+    color:white;
+    border:1px solid #930606;
+    background-color: red;
+    font-size:18px;
+}
+
+.btneditcliente{
+    flex-grow: 1;
+    display:inline-block;
+    color:white;
+    text-decoration:none;
+    padding:8px;
+    width:30%;
+    background-color: green;
+    cursor:pointer;
+    margin-top:50px;
+    margin-left: 0%;
+    border-radius:3px;
+    text-align:center;
+    transition:all 500ms;
+}
+
+.btneditcliente:hover{
+    background-color: #2d572c;
+}
+
+.btndeletecliente{
+    background-color: red;
+}
+.btndeletecliente:hover{
+    background-color:#990000;
+}
+
+
+
+
+/*ESTILOS BOTON DE VER TAREAS PENDIENTES/ACABADAS DE LA EMPRESA QUE ESTA AL FINAL DE LA
+PAGINA DE TAREAS */
+
+/*CONTENEDOR FLEXBOX DE LOS BOTONES */
+.botonesbuscar_tareasacabadas{
+    display:flex;
+    flex-grow: 1;
+    align-items:flex-end;
+    justify-content:space-between;
+}
+
+#btn-busquedatareaparticular,
+#btn-busquedatareaempresa{
+    margin-right:-19%;
+}
+
+
+/*TAMAÑOS GENERALES DE LOS BOTONES */
+#btn-tareasacabadasempresa,
+#btn-volvertareaspendientes,
+#btn-tareasacabadasparticular,
+#btn-volvertareaspendientesparticular,
+#btn-busquedatareaempresa{
+    width:35%;
+}
+
+/*ESTILOS GENERALES DE LOS BOTONES */
+.tareas-acabadas{
+    /*display:inline-block;*/
+    color:white;
+    text-decoration: none;
+    background-color: green;
+    padding:5px;
+    cursor: pointer;
+    margin-top:50px;
+    text-align:center;
+    border-radius:3px;
+    transition:all 500ms;
+}
+
+.tareas-acabadas:hover{
+    background-color: #2d572c;
+}
+
+
+
+
+
+
+.data-task{
+    color:gray;
+}
+
+/*DATOS PERSONALES DEL DETALLE DE LOS DATOS DEL USUARIO*/
+h5 {
+    text-align: center;
+}
+
+/*ESTILOS DE ALERTAS*/
+
+/*Alerta de login incorrecto*/ 
+.errorlogin{
+    background-color: red;
+    color:white;
+    margin: 40px auto;
+    width:48%;
+}
+.plazo{ /*.plazo es clase que se refiere al avis de plazo para finalizar la tarea*/
+    background-color: red;
+    color:white;
+    width: 113%;
+    margin: 40px auto;
+}
+
+.tareaspendientes{
+    margin:0px auto;
+}
+
+
+.mensajeflash{  /*MENSAJE FLASH DE TAREA CREADA  O EDITADA Y USUARIO EDITADO*/
+    text-align: center;
+    margin:0px auto;
+    width:53%;
+    background-color: green;
+    margin-bottom: 20px;
+    color:white;
+}
+
+.plazotareavencido{ /*ESTILOS DE AVISO PLAZO VENCIDO Y TAREA BORRADA*/
+    width:56%;
+    background-color: red;
+    margin-bottom: 20px;
+    color:white;
+}
+
+
+
+
+/*BOTONES PAGINACION*/
+
+#botones-paginacion{
+    display: flex;
+    justify-content:space-between; 
+}
+
+
+
+/*ESTILOS DEL CAMPO CONTENIDO DE TAREA DENTRO DE LA PANTALLA DE DETALLE DE LA TAREA  */
+#contenidotarea{
+    width: 100%;
+    overflow-wrap: anywhere;
+}
+
+
+
+/*ESTILOS FOOTER*/ 
+
+
+footer{
+    width: 100%;
+    background-color: #444;
+    height: 70px;
+    display:grid;
+    grid-template-areas:
+        "   .                   .                 .                   .                    . "
+        "   autor             avisolegal          ayuda           soportetecnico  redessociales";
+
+    grid-template-columns: 25%   25%   20%  20% 10% ;
+    grid-template-rows:  30%  70%    
+}
+
+
+
+
+.subir{
+    float:right;
+    margin-bottom: 1%;
+    color:black;
+    font-weight: bold;
+    margin-left:1%;
+}
+.subir a{
+    display:block;
+    margin-bottom: 1%;
+}
+
+#flecha {
+    margin-right: -2%;
+}
+#flecha img{
+    display:block;
+    width:30%;
+    margin-right: -10%;
+    margin-bottom: -2%;
+    margin-top:-28%;
+    cursor: pointer;
+}
+
+
+
+
+
+#redessociales{
+    grid-area: redessociales;
+    text-align: center;
+
+}
+
+
+/*
+#instagram{
+    opacity:0;
+    grid-area: instagram;
+}
+
+#twitter{
+    opacity: 0;
+    grid-area:twitter;
+}
+*/
+
+#linkedin{
+    grid-area: linkedin;
+    /*text-align: right;*/
+
+}
+
+
+#instagram img,
+#linkedin img,
+#twitter img{
+    width:40%;
+}
+
+
+
+#autor{
+    grid-area: autor;
+    color:white;
+    text-align: center;
+}
+
+#avisolegal{
+    grid-area:avisolegal;
+    color:white;
+    text-align: center;
+}
+
+#ayudapiedepagina{
+    grid-area:ayuda;
+    color:white;
+    text-align: center;
+}
+#soportetecnico{
+    grid-area:soportetecnico;
+    color:white;
+    text-align: center;
+}
+
+#avisolegal a,
+#ayudapiedepagina a,
+#soportetecnico a{
+    color:white;
+
+}
+
+/*ESTILOS DE LA IMAGEN DE LA PORTADA*/
+#portada{
+    /*margin-left: -5%;*/
+    width:100%;
+    height:380px;
+    margin-top:10px;
+}
+
+/*HORA DE LA WEB*/
+#hora {
+    font-weight: bold;
+    padding:0px;
+    color:transparent;
+    float: right;
+    margin-right:40%;
+    font-size:34px;
+}
+
+
+/*ESTILOS DEL ENLACE QUE PONE : "AQUI" , DEL LOGIN */
+.restablecerpassword,
+#restablecerpasswordenlace,
+#restablecerfrase,
+#cambiarfraseseguridad{
+    text-decoration: none;
+    color:#444;
+    width:100%;
+}
+#restablecerpasswordenlace,
+#restablecerfrase,
+#cambiarfraseseguridad{
+    color:blue;
+}
+
+#botones{
+    display:flex;
+    align-content:space-around;
+    justify-content:flex-end;
+}
+
+#botonsubmit{
+    margin-top:22%;
+    margin-left: 5%;
+    margin-right: 45%;
+    background-color: green;
+    border:none;
+    border-radius:3px;
+    height: 47%;
+}
+
+#botonsubmit:hover{
+    background-color: #2d572c;
+}
+
+#dardebaja{
+    margin-left: 3%;
+}
+
+/*ESTILOS DE LOS CAMPOS DEL FORMULARIO DE ELEGIR LA FRASE DE SEGURIDAD*/ 
+.inputselegirfraseseguridad{
+    margin-bottom: 2%;
+}
+
+
+/*ESTILOS DE LA ULTIMA FRASE DE PRIMEROS PASOS EN LA PARTE DE LA AYUDA*/
+#bienvenido{
+    background-color: #007fff;
+    color:white;
+}
+
+#viasdecontacto{
+    color:#007fff;
+}
+
+
+/*ESTILOS DE AVISO LEGAL */
+
+#contenedorprincipal{
+    min-height: 1300px;
+    margin-left:13.5%;
+    width: 86%;
+    display:grid;
+    grid-template-columns:75% 5% 20%;
+    grid-template-rows:100%;
+    grid-template-areas:"contenidolegal  spaceblank   indiceprincipal";
+
+}
+
+
+
+#contenidolegal{
+    grid-area:contenidolegal;
+    background-color: #D6AC84;
+    padding:2%;
+}
+
+#spaceblank{
+    grid-area:spaceblank;
+}
+
+#indiceprincipal{
+    grid-area:indiceprincipal;
+}
+
+
+#indicecontenido{
+    padding:0px;
+    display:grid;
+    height: 100%;
+    grid-template-columns:100%;
+    grid-template-rows:repeat(17,2%);
+    grid-template-areas:"indice"
+        "identificacion"
+        "finalidad"
+        "condiciones"
+        "comentarios"
+        "mayoria"
+        "medidas"
+        "datos"
+        "contenidos"
+        "politica"
+        "enlaces"
+        "enlacesdeafiliados"
+        "propiedad"
+        "limitacion"
+        "derecho"
+        "datosjuris"
+        "contacto";
+}
+
+#indice{
+    grid-area:indice;
+    text-align: left;
+    margin-top:2%;
+    color:black;
+    font-size:28px;
+    text-decoration: underline;
+}
+
+#identificacion{
+    grid-area:identificacion;
+}
+#finalidad{
+    grid-area:finalidad;
+}
+
+#condiciones{
+    grid-area:condiciones;
+}
+#comentarios{
+    grid-area:comentarios;
+}
+
+#mayoria{
+    grid-area:mayoria;
+}
+
+#medidas{
+    grid-area:medidas;
+}
+
+#datos{
+    grid-area:datos;
+}
+#contenidos{
+    grid-area:contenidos;
+}
+
+#politica{
+    grid-area:politica;
+}
+
+#enlaces{
+    grid-area:enlaces;
+}
+#enlacesdeafiliados{
+    grid-area:enlacesdeafiliados;
+}
+
+#pripiedad{
+    grid-area:propiedad;
+}
+
+#limitacion{
+    grid-area:limitacion;
+}
+
+#derecho{
+    grid-area:derecho;
+}
+
+#datosjuris{
+    grid-area:datosjuris;
+}
+
+#contacto{
+    grid-area:contacto;
+}
+
+
+#indicecontenido li{
+    list-style:none; 
+    transition:all 300ms;
+}
+
+#indicecontenido li a{
+    text-decoration: none;
+    color:black;
+    transition: all 300ms;
+    font-weight: bold;
+}
+#indicecontenido li:hover a{
+    background-color: #007fff;
+    color:white;
+}
+
+
+#tituloavisolegal{
+    background-color: #007fff;
+    color:white;
+}
+
+
+
+/*Parrafo identificacion y titularidad de la parte de aviso legal */
+
+.parrafoidentificacionytitularidad{
+
+    font-size:20px;
+    letter-spacing:2px;
+    line-height:30px; 
+}
+
+#titular,
+#nif,
+#domicilio,
+#correoelectronico{
+    font-weight: bold;
+}
+
+
+/*ESTILOS POLITICA DE PRIVACIDAD*/
+
+#contentPoliticaPrivacidad{
+    min-height: 1300px;
+    margin-left:13.5%;
+    width: 86%;
+    display:grid;
+    grid-template-columns:70% 10% 20%;
+    grid-template-rows:100%;
+    grid-template-areas:"contenidopolitica  columnablancapolitica   indicegenericoPolitica";
+
+}
+
+
+
+#contenidopolitica{
+    grid-area:contenidopolitica;
+    background-color: #D6AC84;
+    padding:5%;
+}
+
+#columnablancapolitica{
+    grid-area:columnablancapolitica;
+}
+
+#indicegenericoPolitica{
+    grid-area:indicegenericoPolitica;
+}
+
+
+#indicePolitica{
+    list-style: none;
+    padding:0px;
+    display:grid;
+    height: 100%;
+    grid-template-columns:100%;
+    grid-template-rows:repeat(17,1.8%);
+    grid-template-areas:"indicepoliticaprivacidad"
+        "enlaceparrafoinicial"
+        "enlaceidentidad"
+        "enlaceprincipios"
+        "enlaceobtencion"
+        "enlacederechos"
+        "enlacefinalidad"
+        "enlaceseguridad"
+        "enlacecontenido"
+        "enlacepoliticacookies"
+        "enlacelegitimacion"
+        "enlacecategorias"
+        "enlaceconservacion"
+        "enlaceexactitud"
+        "enlaceaceptacion"
+        "enlacerevocabilidad"
+        "enlacecambios";
+}
+
+#indicePolitica li a{
+    text-decoration: none;
+    color:black;
+    transition: all 300ms;
+    font-weight: bold;
+    line-height: none;
+    letter-spacing:normal;
+}
+#indicePolitica li:hover a{
+    background-color: #007fff;
+    color:white;
+}
+
+#indicepoliticaprivacidad{
+    grid-area:indicepoliticaprivacidad;
+    text-align:left;
+    font-size: 28px;
+    text-decoration: underline;
+}
+
+#enlaceparrafoinicial{
+    grid-area:enlaceparrafoinicial;
+}
+
+#enlaceidentidad{
+    grid-area:enlaceidentidad;
+}
+#enlaceprincipios{
+    grid-area:enlaceprincipios;
+}
+#enlaceobtencion{
+    grid-area:enlaceobtencion;
+}
+
+#enlacederechos{
+    grid-area:enlacederechos;
+}
+
+#enlacefinalidad{
+    grid-area:enlacefinalidad;
+}
+#enlaceseguridad{
+    grid-area:enlaceseguridad;
+}
+#enlacecontenido{
+    grid-area:enlacecontenido;
+}
+
+#enlacepoliticacookies{
+    grid-area:enlacepoliticacookies;
+}
+#enlacelegitimacion{
+    grid-area:enlacelegitimacion;
+}
+
+#enlacecategorias{
+    grid-area:enlacecategorias
+}
+
+#enlaceconservacion{
+    grid-area:enlaceconservacion;
+}
+#enlaceexactitud{
+    grid-area:enlaceexactitud;
+}
+
+#enlaceaceptacion{
+    grid-area:enlaceaceptacion;
+}
+
+#enlacerevocabilidad{
+    grid-area:enlacerevocabilidad;
+}
+
+#enlacecambios{
+    grid-area:enlacecambios;
+}
+
+
+
+.avanzarpagina{
+    /*display:inline-block;*/
+    font-size: 15px;
+    text-decoration: none;
+    margin-left:79%;
+    color:blue;
+}
+
+.retrocederpagina{
+    /*display:inline-block;*/
+    text-decoration: none;
+    /*margin-right:-26%;*/
+    color:blue;
+}
+
+/*ESTILOS DE COINCIDENCIAS DE RESULTADOS EN LA BUSQUEDA*/
+.resultadobusqueda{
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
+/*MEDIA QUERIES- RESPONSIVE */
+
+@media(min-width:1600px){
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    select,
+    textarea{
+        width: 30%;
+        padding:8px;
+    }
+    .plazotareavencido{
+        width:56%;
+    }
+}
+
+@media(min-width:1501px){
+
+    
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 50%;
+        padding:1%;
+    }
+    select{
+        width: 52%;
+        padding: 1%;
+    }
+
+
+}
+
+
+@media(max-width:1500px){
+    #menu{
+        width:88%;
+    }
+    #menu li{
+        font-size: 19px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    textarea{
+        width: 50%;
+        padding:8px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 50%;
+        padding:1%;
+    }
+    select{
+        width: 52%;
+        padding: 1%;
+    }
+
+
+}
+
+
+@media(max-width:1461px){
+    #Bienvenida1{
+        font-size:14px;
+    }
+}
+
+
+@media(max-width:1450px){
+    #menu li{
+        font-size:18px;
+
+    }
+}
+
+@media(max-width:1370px){
+    #menu li{
+        font-size:17px;
+    }
+
+    .plazotareavencido{
+        width:60%;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 65%;
+        padding:1%;
+        font-size: 15px;
+    }
+    select{
+        width: 67%;
+        padding: 1%;
+        font-size:15px;
+    }
+
+}
+
+
+@media(max-width:1347px){
+    .avanzarpagina,
+    .retrocederpagina{
+        font-size:14px;
+    }
+}
+
+
+@media(max-width:1313px){
+
+    #Bienvenida1{
+
+        font-size:18px;
+    }
+    #hora {
+        width:50%;
+        font-size:25px;
+        margin-right:10%;
+    }
+
+
+    #Bienvenida1{
+        font-size:11px;
+    }
+
+
+}
+
+
+
+
+@media(max-width:1293px){
+    #menu li{
+        font-size: 16px;
+    }
+}
+
+@media(max-width:1285px){
+    table .tarea{
+        width:45%;
+    }
+
+    .plazotareavencido{
+        width:70%;
+    }
+
+    /*ESTILOS MENSAJE DE LOGIN INCORRECTO*/
+    .errorlogin{
+        width:55%;
+    }
+}
+
+
+
+@media(max-width:1241px){
+    #hora{
+        font-size:23px;
+    }
+}
+
+@media(max-width:1225px){
+    #menu li{
+        font-size:15px;
+    }
+}
+
+@media(max-width:1220px){
+    table .tarea{
+        width:40%;
+    }
+}
+
+@media(max-width:1210px){
+    .avanzarpagina{
+        font-size: 12px;
+    }
+}
+
+
+@media(max-width:1189px){
+    #hora{
+        font-size:22px;
+    }
+}
+
+@media(max-width:1157px){
+    table .tarea{
+        width:38%;
+    }
+    .mensajeflash{
+        width:54%;
+    }
+
+}
+
+
+
+
+
+@media(max-width:1138px){
+    #hora{
+        font-size:20px;
+    }
+    #menu li{
+        font-size:14px;
+    }
+    table .tarea{
+        width:35%;
+    }
+
+    .mensajeflash{
+        width:56%;
+    }
+
+    /*ESTILOS MENSAJE DE LOGIN INCORRECTO*/
+    .errorlogin{
+        width:60%;
+    }
+}
+
+@media(max-width:1094px){
+    table .tarea{
+        width:30%;
+    }
+    .avanzarpagina,
+    .retrocederpagina{
+        font-size:12px;
+    }
+    .numeropagina{
+        font-size:12px;
+    }
+    .plazotareavencido{
+        width:80%;
+    }
+    .mensajeflash{
+        width:60%;
+    }
+
+}
+
+@media(min-width:1080px){
+
+    #linkedin img{
+        width:43px;
+    }
+}
+
+@media(max-width:1080px){
+    #menu li{
+        font-size:13px;
+    }
+}
+
+
+
+
+
+@media(max-width:1034px){
+    #hora{
+        width: 50%;
+        float:none;
+        margin-left: 1%;
+    }
+    table .tarea{
+        width:25%;
+    }
+    .buttons a{
+        padding:2%;
+    }
+    #btn-delete{
+        padding:3%;
+    }
+
+
+    .tarea,
+    .prioridad,
+    .horas,
+    .previstofinalizar,
+    .acciones{
+        font-size:15px;
+    }
+
+    .mensajeflash{
+        width:70%;
+    }
+
+    /*ESTILOS MENSAJE DE LOGIN INCORRECTO*/
+    .errorlogin{
+        width:65%;
+    }
+}
+
+
+@media(max-width:1021px){
+    #botones{
+        width:110%;
+    }
+}
+
+
+@media(max-width:1000px){
+    #menu li{
+        font-size:12px;
+    }
+
+    input[type="text"], input[type="password"], input[type="email"], select, textarea {
+        padding: 4px;
+        width: 45%;
+    }
+  
+    #title{ /*Esto id es del titulo para hacer la busqueda de la tarea por titulo*/ 
+        width: 50%;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 70%;
+        padding:1%;
+        font-size: 15px;
+    }
+    select{
+        width: 72%;
+        padding: 1%;
+        font-size:15px;
+    }
+
+    /*BOTONES DE EDITAR MIS DATOS,CAMBIAR CONTRASEÑA Y DARME DE BAJA*/
+    #botones{
+        font-size: 10px;
+    }
+    .btneditcliente{
+        margin-top: 5%;
+        margin-bottom: 3%;
+        padding:5px;
+    }
+    #botonsubmit{
+        margin-top:25%;
+        padding: 7px;
+        height: 32.2%;
+    }
+
+
+}
+
+
+@media(max-width:978px){
+    .avanzarpagina{
+        font-size:11px;
+    }
+}
+
+
+@media(max-width:958px){
+    #btn-busquedatareaempresa{
+        width: 37%;
+    }
+
+    .plazotareavencido{
+        width:85%;
+    }
+
+    #botones{
+        font-size: 10px;
+    }
+    /*
+    .btneditcliente{
+        margin-top: 5%;
+        margin-bottom: 3%;
+
+    }
+*/
+    #botonsubmit{
+        margin-top:24%;
+    }
+
+}
+
+
+@media(max-width:940px){
+    #titulo{
+        font-size:60px;
+    }
+
+    #title{
+        width: 60%;
+    }
+
+    #nombreusuario{
+        font-size:20px;
+    }
+
+    #Bienvenida1{
+        font-size: 8px;
+    }
+    #hora{
+        width:100%;
+    }
+
+    .avanzarpagina,
+    .retrocederpagina{
+        font-size:11px;
+    }
+
+    /*ESTILOS MENSAJE DE LOGIN INCORRECTO*/
+    .errorlogin{
+        width:70%;
+    }
+}
+
+
+@media(max-width:921px){
+    .avanzarpagina{
+        font-size:10px;
+    }
+}
+
+@media(max-width:910px){
+    #menu li{
+        font-size: 11px;
+    }
+
+    #title{
+        width: 70%;
+    }
+
+    #btn-tareasacabadasempresa{
+        width:38%;
+    }
+    #btn-busquedatareaempresa{
+        width:40%;
+    }
+
+    #botonsubmit{
+        height: 33%;
+        margin-top:23%;
+    }
+    .btneditcliente{
+        height:50%;
+    }
+
+
+}
+
+
+@media(max-width:898px){
+    .avanzarpagina,
+    .retrocederpagina{
+        font-size:9px;
+    }
+    table td{
+        font-size:15px;
+    }
+
+    #flecha img{
+        width:20%;
+    }
+    h2{
+        font-size:18px;
+    }
+
+    .tarea,
+    .prioridad,
+    .horas,
+    .previstofinalizar,
+    .acciones{
+        font-size:13px;
+    }
+
+
+    #boton-logar{
+        padding:4px;
+    }
+
+    .restablecerpassword{
+        font-size:9px;
+    }
+
+    .plazotareavencido{
+        width:88%;
+        font-size: 15px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 70%;
+        padding:1%;
+        font-size: 15px;
+    }
+    select{
+        width: 72%;
+        padding: 1%;
+        font-size:15px;
+    }
+    /*BOTON GUARDAR CUANDO SE QUIERE MODIFICAR TAREA*/ 
+    #task_submit,
+    #task_type_creation_submit,
+    #edituser_submit,
+    #boton_cambiar_password,
+    #volveramisdatos{
+        padding:7px;
+        font-size:14px;
+    }
+    .mensajeflash{
+        width:80%;
+    }
+
+
+
+    
+
+
+    /*ESTILOS POLITICA PRIVACIDAD*/
+    #indicepoliticaprivacidad{
+        font-size: 20px;
+    }
+    #indicePolitica li a{
+        font-size:10px;
+    }
+    #contenidopolitica ol li a,
+    #contenidopolitica p,
+    #contenidopolitica li,
+    #contenidopolitica h2{
+        font-size:14px;
+    }
+
+
+    /*ESTILOS AVISO LEGAL*/
+    #indicecontenido li a{
+        font-size:10px;
+    }
+
+
+
+    /*ESTILOS MENSAJE DE LOGIN INCORRECTO*/
+    .errorlogin{
+        width:75%;
+    }
+
+}
+
+
+
+
+@media(max-width:840px){
+    #menu li{
+        font-size:10px;
+    }
+
+    #title{
+        width: 80%;
+    }
+    #botonsubmit{
+        margin-top:21%;
+        height: 36%;
+    }
+
+    #contenidolegal h2{
+        font-size:16px;
+    }
+    #contenidolegal p,
+    #contenidolegal ol li{
+        font-size:15px;
+    }
+
+    /*AVISO LEGAL */
+    #indicecontenido li a{
+        font-size:7px;
+    }
+
+
+
+}
+
+
+
+
+
+@media(max-width:815px){
+    #titulo{
+        font-size:50px;
+    }
+
+    #autor{
+        font-size:12px;
+    }
+    #avisolegal{
+        font-size:12px;
+    }
+
+    #ayudapiedepagina{
+        font-size:12px;
+    }
+    #soportetecnico{
+        font-size: 12px;
+    }
+
+    #Bienvenida1{
+        font-size: 7px;
+    }
+    /*ESTILOS MENSAJE DE LOGIN INCORRECTO*/
+    .errorlogin{
+        width:80%;
+    }
+    
+    #botonsubmit{
+        margin-top:20%;
+        height: 36%;
+    }
+    
+    
+}
+
+
+@media(max-width:790px){
+    #menu li{
+        font-size:9.8px;
+    }
+    #title{
+        width: 85%;
+    }
+
+
+
+}
+
+@media(max-width:766px){
+
+    #titulo{
+        font-size:40px;
+    }
+
+    .buttons a{
+        padding:1%;
+        font-size:15px;
+    }
+    #btn-delete{
+        padding:2%;
+        font-size: 15px;
+    }
+
+    #btn-tareasacabadasparticular,
+    #btn-tareasacabadasempresa{
+        width:36%;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 70%;
+        padding:1%;
+        font-size: 15px;
+    }
+    select{
+        width: 72%;
+        padding: 1%;
+        font-size:15px;
+    }
+
+    .mensajeflash{
+        width:85%;
+        font-size:14px;
+    }
+
+    #botonsubmit{
+        margin-top:19%;
+        height: 39%;
+    
+    }
+
+    /*ESTILOS MENSAJE DE LOGIN INCORRECTO*/
+    .errorlogin{
+        width:85%;
+    }
+
+}
+
+
+@media(max-width:745px){
+    #btn-tareasacabadasparticular,
+    #btn-tareasacabadasempresa{
+        width:40%;
+    }
+    .plazotareavencido{
+        width:91%;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 75%;
+        padding:1%;
+        font-size: 15px;
+    }
+    select{
+        width: 77%;
+        padding: 1%;
+        font-size:15px;
+    }
+
+    /*ESTILOS MENSAJE DE LOGIN INCORRECTO*/
+    .errorlogin{
+        font-size:15px;
+    }
+    
+    #botonsubmit{
+        margin-top:17%;
+        height: 41%;
+    }
+    
+}
+
+
+@media (max-width:700px){
+    #menu{
+        height: 30px;
+        line-height: 30px;
+        /*width: 90%;*/
+    }
+    #menu li{
+        font-size: 9px;
+    }
+    /*    
+    #portada{
+            height: 40%;
+    }    
+    */
+    .tarea,
+    .prioridad,
+    .horas,
+    .previstofinalizar,
+    .acciones{
+        font-size:10px;
+    }
+
+    h2,
+    .data-task,
+    h3,
+    p{
+        font-size:15px;
+    }
+    .plazotareavencido{
+        width:95%;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 80%;
+        padding:1%;
+        font-size: 15px;
+    }
+    select{
+        width: 82%;
+        padding: 1%;
+        font-size:15px;
+    }
+    
+
+    /*AVISO LEGAL */
+    #contenidolegal ol li,
+    #contenidolegal p{
+        font-size:12px;
+    }
+
+}
+
+@media(max-width:670px){
+    #menu li{
+        font-size:8px;
+    }
+
+    .buttons a{
+        padding:1%;
+        font-size:12px;
+    }
+    #btn-delete{
+        padding:2%;
+        font-size: 13px;
+    }
+
+    table td{
+        font-size:11px;
+    }
+
+    #title{
+        width: 90%;
+    }
+    .resultadobusqueda{
+        font-size:55%;
+    }
+
+    #btn-tareasacabadasparticular,
+    #btn-tareasacabadasempresa{
+        width:41%;
+    }
+
+    .plazotareavencido{
+
+        font-size:14px;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 85%;
+        padding:1%;
+        font-size: 15px;
+    }
+    select{
+        width: 87%;
+        padding: 1%;
+        font-size:15px;
+    }
+
+    #contenidopolitica li,
+    #contenidopolitica p{
+        font-size: 12px;
+    }
+}
+
+
+@media(max-width:654px){
+    #btn-tareasacabadasparticular,
+    #btn-busquedatareaparticular,
+    #btn-tareasacabadasempresa,
+    #btn-busquedatareaempresa{
+        font-size: 11px;
+        width:39%;
+    }
+}
+
+@media(max-width:645px){
+    .avanzarpagina,
+    .retrocederpagina{
+        font-size:6px;
+    }
+
+    .tarea,
+    .prioridad,
+    .horas,
+    .previstofinalizar,
+    .acciones{
+        font-size:8px;
+    }
+    #botonsubmit{
+        margin-top: 16%;
+        height: 43%;
+    }    
+}
+
+
+@media(max-width:630px){
+    #menu li{
+        font-size:7.5px
+    }
+    .plazotareavencido{
+        width:98%;
+        font-size:13px;
+    } 
+
+    /*ESTILOS POLITICA PRIVACIDAD*/
+    #indicepoliticaprivacidad{
+        font-size: 19px;
+    }
+    #indicePolitica li a{
+        font-size:9px;
+    }
+
+
+}
+
+@media(max-width:600px){
+
+    /*
+    #portada{
+        height: 35%;
+    }
+    */
+    #flecha{
+        width:15%;
+    }
+    #titulo{
+        font-size: 35px;
+    }
+
+    input[type="email"],
+    input[type="password"]{
+        width:80%;
+    }
+    .restablecerpassword{
+        font-size:7px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 88%;
+        padding:1%;
+        font-size: 15px;
+    }
+    select{
+        width: 90%;
+        padding: 1%;
+        font-size:15px;
+    }
+    #botones{
+        font-size:9px;
+    }
+    
+
+    #acordeon{
+        font-size:70%;
+    }
+    #acordeon p{
+        font-size:10px;
+    }
+
+    /*ESTILOS MENSAJE DE LOGIN INCORRECTO*/
+    .errorlogin{
+        width:90%;
+    }
+
+    /*ESTILOS POLITICA DE PRIVACIDAD*/
+
+    .parrafoidentificacionytitularidad {
+        font-size: 15px;
+        letter-spacing: 0px;
+        line-height:15px;
+    }
+    p{
+        text-align: left;
+    }
+
+    #indicePolitica li{
+        line-height: 10px;
+    }
+    #indicePolitica li a{
+        letter-spacing: normal;
+        font-size: 8px;
+    }
+
+    /*ESTILOS AVISO LEGAL */
+
+    #indice{
+        font-size:20px;
+    }
+
+    #indicecontenido li a{
+        font-size:6px;
+    }
+
+}
+
+@media(max-width:582px){
+    #menu li{
+        font-size:6.7px;
+    }
+    #portada{
+        height:290px;
+    }
+
+    .plazotareavencido{
+        width:98%;
+        font-size:12px;
+    }
+
+
+    .mensajeflash{
+        width:90%;
+        font-size:12px;
+    }
+    
+    /*ESTILOS MENSAJE DE LOGIN INCORRECTO*/
+    .errorlogin{
+        font-size:13px;
+    }
+
+
+
+
+}
+
+@media(max-width:550px){
+
+    #nombreusuario{
+        font-size:15px;
+    }
+
+    .avanzarpagina,
+    .retrocederpagina{
+        font-size:5.5px;
+    }
+    table td{
+        font-size:9px;
+    }
+
+    .buttons a{
+        padding-left: 2%;
+        font-size: 9px;
+        padding-right: 2%;
+    }
+    #btn-delete{
+        padding:1%;
+        font-size: 11px;
+    }
+    #Bienvenida1{
+        font-size: 6px;
+    }
+
+    #title{
+        width: 95%;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 90%;
+        padding:1%;
+        font-size: 15px;
+    }
+    select{
+        width: 92%;
+        padding: 1%;
+        font-size:15px;
+    }
+
+}
+
+
+@media(max-width:527px){
+
+    #menu li{
+        font-size:5.8px;
+
+    }
+    #btn-busquedatareaempresa{
+        width:44%;
+    }
+
+    #btn-tareasacabadasempresa{
+        width:41%;
+    }
+    
+    #botones .btneditcliente{
+        width:80%;
+    }
+    
+    #botonsubmit{
+        margin-top: 15%;
+        height: 45%;
+    }
+}
+
+
+
+@media(max-width:514px){
+    .avanzarpagina,
+    .retrocederpagina{
+        font-size:5px;
+    }
+    .numeropagina{
+        font-size:8px;
+    }
+
+
+    .ui-tooltip{
+        font-size:8px;
+    }
+
+
+
+
+}
+
+@media(max-width:502px){
+    .plazotareavencido{
+        width:98%;
+        font-size:11px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 91%;
+        padding:1%;
+        font-size: 14px;
+    }
+    select{
+        width: 93%;
+        padding: 1%;
+        font-size:14px;
+    }
+
+    #botonsubmit{
+        margin-top: 14%;
+    }
+
+    #acordeon{
+        font-size:50%;
+    }
+}
+
+
+
+@media(max-width:490px){
+    footer #autor,
+    footer #avisolegal,
+    footer #ayudapiedepagina,
+    footer #soportetecnico{
+        font-size: 7px;
+
+    }
+
+
+    #titulo{
+        font-size:30px;
+    }
+    #hora{
+        font-size:15px;
+    }
+
+    h2{
+        font-size:15px;
+    }
+
+    .tarea,
+    .prioridad,
+    .horas,
+    .previstofinalizar,
+    .acciones{
+        font-size:6px;
+    }
+
+    .avanzarpagina{
+        font-size:4px;
+
+    }
+    #labelfortitlesearch{
+        font-size:12px;
+    }
+
+    .plazotareavencido{
+
+        font-size:10px;
+    }
+
+    #botones{
+        font-size:6px;
+    }
+    #botonsubmit{
+        margin-top:19%;
+        height: 41%;
+    }
+
+    /*ESTILOS MENSAJE DE LOGIN INCORRECTO*/
+    .errorlogin{
+        width:95%;
+        font-size:12px;
+    }
+
+
+
+
+}
+
+
+@media(max-width:457px){
+    #menu li{
+        font-size:5.1px;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 93%;
+        padding:1%;
+        font-size: 13px;
+    }
+    select{
+        width: 95%;
+        padding: 1%;
+        font-size:13px;
+    }
+    #contenidopolitica ol li a,
+    #contenidopolitica p,
+    #contenidopolitica li,
+    #contenidopolitica h2{
+        font-size:10px;
+    }
+
+    #botonsubmit {
+        margin-top: 18%;
+        height: 45%;
+    }
+}        
+
+
+@media(max-width:445px){
+    .buttons a{
+        padding-left: 2%;
+        font-size: 8px;
+        padding-right: 2%;
+
+    }
+    #btn-delete{
+        padding: 2.5% 2% 2.5% 2%;
+        font-size: 8px;
+    }
+    .plazotareavencido{
+
+        font-size:9px;
+    }
+
+
+    .mensajeflash{
+        width:95%;
+        font-size:10px;
+    }
+
+}
+
+
+
+
+@media(max-width:433px){
+    #titulo{
+        font-size:25px;
+    }
+
+    #nombreusuario{
+        font-size: 13px;
+    }
+
+
+    .avanzarpagina,
+    .retrocederpagina{
+        font-size:4px;
+
+    }
+
+
+    table td{
+        font-size:8px;
+    }
+    #portada{
+        height:230px;
+    }
+
+    #btn-tareasacabadasparticular,
+    #btn-busquedatareaparticular,
+    #btn-tareasacabadasempresa,
+    #btn-busquedatareaempresa{
+        font-size: 9px;
+        width:39%;
+    }
+
+    
+
+    h5,
+    .data-task{
+        font-size:10px;
+    }
+
+    /*ESTILOS MENSAJE DE LOGIN INCORRECTO*/
+    .errorlogin{
+        width:97%;
+        font-size:11px;
+    }
+
+    #contenidopolitica ol li a,
+    #contenidopolitica p,
+    #contenidopolitica li,
+    #contenidopolitica h2{
+        font-size:6px;
+    }
+    /*
+    #indicePolitica li a{
+        font-size:4px;
+    }*/
+
+
+    #indicepoliticaprivacidad{
+        font-size: 10px;
+    }
+
+    #indicePolitica li{
+        line-height: 10px;
+    }
+    #indicePolitica li a{
+        letter-spacing:normal;
+        font-size: 4px;
+    }
+
+    /*AVISO LEGAL */
+
+
+    #contenidolegal ol li,
+    #contenidolegal p{
+        font-size:8px;
+    }
+    #indice{
+        font-size:12px;
+    }
+    #indicecontenido{
+        grid-template-rows: repeat(17,2%);
+    }
+
+    #indicecontenido li a{
+        font-size:5px;
+    }
+
+    #botonsubmit {
+        margin-top: 16%;
+        height: 47%;
+    }
+    
+}
+
+@media(max-width:404px){
+    #menu{
+        height: 20px;
+    }
+    #menu li{
+        font-size:4.3px;
+        line-height: 20px;
+    }
+
+
+    .tareas-acabadas{
+        font-size:6px;
+        width:85%;
+    }
+
+    #buscartareaportitulo{
+        font-size:50%;
+        padding:4px;
+    }
+    #title{
+        font-size:8px;
+        width:98%;
+    }
+    .resultadobusqueda{
+        font-size:45%;
+    }
+
+    h2,
+    .data-task,
+    h3,
+    p{
+        font-size:13px;
+
+    }
+
+    .buttons a{
+        padding-left: 2%;
+        font-size: 7px;
+        padding-right: 2%;
+
+    }
+    #btn-delete{
+        padding: 2.5% 2% 2.5% 2%;
+        font-size: 7px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+        width: 95%;
+        padding:1%;
+        font-size: 12px;
+    }
+    select{
+        width: 97%;
+        padding: 1%;
+        font-size:12px;
+    }
+    label{
+        font-size:12px;
+    }
+
+    /*BOTON GUARDAR CUANDO SE QUIERE MODIFICAR TAREA*/ 
+    #task_submit,
+    #task_type_creation_submit,
+    #edituser_submit,
+    boton_cambiar_password,
+    #volveramisdatos{
+        padding:5px;
+        font-size:12px;
+    }
+
+    h2,h5{
+        text-align: left;
+    }
+
+    #acordeon p{
+        font-size:8px;
+    }
+
+    .errorlogin{
+        width:100%;
+        font-size:10px;
+    }
+
+    /*AVISO LEGAL */
+
+
+
+
+    #indicecontenido li a{
+        font-size:4px;
+    }
+
+
+
+}
+
+
+
+
+@media(max-width:380px){
+
+
+    table td{
+        font-size:7px;
+    }
+
+    input[type="email"],
+    input[type="password"]{
+        width:100%;
+        font-size: 50%;
+    }
+
+    #Bienvenida1{
+        font-size: 5px;
+    }
+
+    .restablecerpassword{
+        font-size:5px;
+    }
+    #boton-logar{
+        padding:1px;
+        width:22%;
+        font-size:75%;
+    }
+    .ui-tooltip{
+        font-size:5px;
+    }
+
+    #botones{
+        font-size:5px;
+    }
+
+    #botonsubmit{
+        padding-top: 8%;
+        height: 48%;
+        margin-top: 17%;
+    }
+
+
+}
+
+@media(max-width:362px){
+    .buttons a{
+        padding-left: 2%;
+        font-size: 6px;
+        padding-right: 2%;
+
+    }
+    #btn-delete{
+        padding: 2.5% 2% 2.5% 2%;
+        font-size: 6px;
+    }
+
+    .avanzarpagina,
+    .retrocederpagina{
+        font-size:3px;
+    }
+    #portada{
+        height:200px;
+    }
+    .plazotareavencido{
+        width:99%;
+        font-size:9px;
+    }
+    /*Tamaño del datepicker de jquery ui*/
+    .ui-state-default{
+        font-size:9px;
+    }
+    ui-datepicker{
+        left:3%;
+    }
+
+    .mensajeflash{
+        width:97%;
+        font-size:9px;
+    }
+
+    .errorlogin{
+        font-size:9px;
+    }
+
+
+
+    #indicePolitica li{
+        padding:2%;
+    }
+    #indicepoliticaprivacidad {
+        font-size: 9px;
+    }
+
+}
+
+
+    @media(max-width:345px){
+        #nombreusuario{
+            font-size:10px;
+        }
+        #hora{
+            font-size: 10px;
+        }
+        #titulo{
+            font-size:23px;
+        }
+        table td{
+            font-size:5px;
+        }
+        #menu li{
+            font-size:3.9px;
+        }
+
+        #title{
+            font-size:8px;
+            width:100%;
+        }
+
+        .plazotareavencido{
+            font-size:7px;
+        }
+
+        .tarea, .prioridad, .horas, .previstofinalizar, .acciones {
+            text-align: center;
+            font-size: 4px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="number"],
+        textarea{
+            width: 97%;
+            padding:1%;
+            font-size: 11px;
+        }
+        select{
+            width: 99%;
+            padding: 1%;
+            font-size:11px;
+        }
+        label{
+            font-size:11px;
+        }
+
+        /*AVISO LEGAL */
+
+
+        #contenidolegal h2{
+            font-size: 12px;
+        }
+
+        #botonsubmit{
+            height: 46%;
+            margin-top: 16%;
+            padding-top: 7%
+        }
+
+    }
+
+
+
+    @media(max-width:329px){
+        #menu li{
+            font-size:3.5px;
+        }
+
+        #titulo{
+            font-size:20px;
+        }
+        #btn-busquedatareaparticular,
+        #btn-busquedatareaempresa{
+            width:44%;
+        }
+
+        #botones{
+            font-size:4px;
+        }
+        
+        #botonsubmit{
+            height: 47%;
+            margin-top: 18%;
+            padding-top: 9%
+        }
+
+
+    }
+
+    @media(max-width:320px){
+        .buttons a{
+            padding-left: 2%;
+            font-size: 5.5px;
+            padding-right: 2%;
+
+        }
+        #btn-delete{
+            padding: 2.5% 2% 2.5% 2%;
+            font-size: 5.5px;
+        }
+        .plazotareavencido{
+            font-size:6px;
+            width: 100%;
+        }
+
+        .mensajeflash{
+            font-size: 9px;
+        }
+
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="number"],
+        textarea{
+            width: 100%;
+            padding:1%;
+            font-size: 10px;
+        }
+        select{
+            width: 102%;
+            padding: 1%;
+            font-size:10px;
+        }
+        label{
+            font-size:10px;
+        }
+
+        /*BOTON GUARDAR CUANDO SE QUIERE MODIFICAR TAREA*/ 
+        #task_submit,
+        #task_type_creation_submit,
+        #edituser_submit,
+        boton_cambiar_password,
+        #volveramisdatos{
+            padding:4px;
+            font-size:10px;
+        }
+        /*CALENDARIO DATEPICKER DE JQUERY UI */
+        .ui-datepicker table{
+            width:73%;
+        }
+
+        h5,
+        .data-task{
+            font-size:9px;
+        }
+
+        #acordeon p{
+            font-size:6px;
+        }
+        
+        /*AVISO LEGAL */
+    
+    
+    #contenidolegal ol li,
+    #contenidolegal p{
+        font-size:6px;
+    }
+    
+    #contenidolegal h2{
+        font-size:10px;
+    }
+    #indice{
+        font-size:10px;
+    }
+        
+    #indicecontenido li a{
+        font-size:3px;
+    }
+}
+
+
+@media(max-width:316px){
+    #botonsubmit {
+        height: 48%;
+        margin-top: 16%;
+        padding-top: 9%;
+    }
+}
+
+
+
+    @media(max-width:285px){
+        #titulo{
+            font-size:19px;
+        }
+
+        #portada{
+            height:150px;
+        }
+
+        h2,
+        .data-task,
+        h3,
+        p{
+            font-size:9px;
+
+        }
+
+
+        #btn-busquedatareaempresa,
+        #btn-tareasacabadasparticular,
+        #btn-tareasacabadasempresa{
+            width:34%;
+            font-size:6px;
+        }
+
+        #btn-busquedatareaparticular{
+            width:35%;
+            font-size:6px;
+        }
+        #btn-volvertareaspendientesparticular{
+            width: 40%;
+        }
+
+        .buttons a{
+            padding-left: 2%;
+            font-size: 5px;
+            padding-right: 2%;
+
+        }
+        #btn-delete{
+            padding: 2.5% 2% 2.5% 2%;
+            font-size: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="number"],
+        textarea{
+            width: 105%;
+            padding:1%;
+            font-size: 9px;
+        }
+        select{
+            width: 107%;
+            padding: 1%;
+            font-size:9px;
+        }
+        label{
+            font-size:9px;
+        }
+
+        /*CALENDARIO DATEPICKER DE JQUERY UI */
+        .ui-datepicker table{
+            width:73%;
+        }
+        #boton_cambiar_password{
+            padding:3px;
+            font-size:7px;
+        }
+
+        .ui-accordion-content-active{
+            height: 200px;
+        }
+
+        /*BOTON GUARDAR CUANDO SE QUIERE MODIFICAR TAREA*/ 
+        #task_submit,
+        #task_type_creation_submit,
+        #edituser_submit,
+        #boton_cambiar_password,
+        #volveramisdatos{
+            padding:3px;
+            font-size:9px;
+        }
+        
+        #botonsubmit {
+            height: 54%;
+            margin-top: 14%;
+            padding-top: 9%;
+        }
+        
+
+    }
+

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+    
+        {% block title %}
+            {%if user is defined %}
+                DETALLE DE {{user.name|upper}} 
+            {%endif%}    
+        {% endblock %}
+    
+{% block body %}
+    
+    <div class="example-wrapper">
+        
+        {#MOSTRAR MENSAJE FLASH DE USUARIO EDITADO CORRECTAMENTE #}
+        {% for variable in app.session.flashbag.get('message')%}
+            <p class="mensajeflash">{{variable}}</p>
+        {%endfor%}
+        
+        {% for variable in app.session.flashbag.get('error')%}
+            <p class="plazotareavencido">{{variable}}</p>
+        {%endfor%}    
+        <h2>DATOS DE  {{user.name|upper}} </h2>
+        
+               
+        <p id="datospersonales">
+            <h5>Nombre:  <b class="data-task"> {{~' '~ user.name}}</b></h5> 
+            <h5>Apellidos: <b class="data-task">{{~' '~ user.surname}}</b></h5> 
+            <h5>Email: <b class="data-task">{{~' '~ user.email}}</b></h5>
+            <h5>Fecha de Registro:<b class="data-task">{{~' '~ user.createdAt.date|date('d-m-Y')}}</b></h5> 
+            <h5>Hora de Registro:<b class="data-task">{{~' '~ user.createdAt.date|date('H:i')}}</b></h5> 
+            {% if user.enterprise !='' %}
+                <h5>Perteneces a la empresa:<b class="data-task">{{user.enterprise}}</b> </h5>
+            {% endif %}    
+        </p>
+        
+        <div id="botones">
+            <a  class="btneditcliente" href="{{path('user_edit',{'id':user.id})}}">EDITAR MIS DATOS</a>
+            <form method="POST" action="{{path('user_searchemail')}}">
+                <input type="hidden" name="email" value="{{user.email}}">
+                <input type="submit" value="CAMBIAR CONTRASEÑA" id="botonsubmit">
+            </form> 
+        
+            {#<a  class="btneditcliente" href="{{path('user_changepassword',{'id':user.id,'fraseseguridad':user.fraseseguridad})}}">CAMBIAR CONTRASEÑA</a>#}
+            <a name="{{user.id}}"  id="dardebaja" class="btneditcliente btndeletecliente" href="">DARME DE BAJA</a>
+        </div>
+
+    </div>
+{% endblock %}
+

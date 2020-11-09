@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AYUDA{% endblock %}
+
+{% block javascripts %}
+{% endblock %}    
+
+{% block mijavascript %}
+    {#jquery#}
+    <script type="text/javascript" src="{{asset('assets/js/jquery-3.5.1.min.js')}}"></script>
+    {#jquery ui#}
+    <script type="text/javascript" src="{{asset('assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
+    
+    {#Mi javascript solo para el menu de ayuda#}
+    <script type="text/javascript" src="{{asset('assets/js/ayuda.js')}}"></script>
+{% endblock %}
+            
+            
+{% block body %}
+
+<div  class="example-wrapper">
+    <h2>AYUDA</h2>
+    <div id="acordeon">
+        <h3>PRIMEROS PASOS </h3>
+        <div>
+            <p>ES UNA APLICACIÓN PRIVADA LO QUE SIGNIFICA QUE PARA DISFRUTAR DE ELLA TIENES QUE ESTAR REGISTRADO,PERO TRANQUILO,<strong>EL REGISTRO ES GRATUITO.</strong></p>
+            <p>1º)REGÍSTRATE,SI NO LO ESTÁS, INTRODUCIENDO UN EMAIL TUYO Y LA CONTRASEÑA QUE DESEES,LA CONTRASEÑA CON LA QUE TE REGISTRAS EN ESTA APLICACIÓN,NO TIENE QUE COINCIDIR CON LA CONTRASEÑA DEL CORREO QUE USAS PARA EL REGISTRO.</p>
+            <p>2º)EL REGISTRO PUEDE SER A NIVEL PERSONAL O COMO TRABAJADOR DE UNA EMPRESA,SI TE REGISTRAS COMO TRABAJADOR PODRAS VER(NO EDITAR NI BORRAR)LAS TAREAS PENDIENTES DE TOD@S L@S TRABAJADORES DE LA EMPRESA.</p>
+            <p>2º)UNA VEZ REGISTRADO,INICIA SESION CON TU EMAIL Y CONTRASEÑA.</p>
+            <p>3º)YA DENTRO PUEDES CREAR TUS TAREAS,VER TUS TAREAS,EDITARLAS O BORRARLAS.</p>
+            <p>4º)SI LO DESEAS CUENTAS CON UN AREA PERSONAL DONDE VES TUS DATOS PARTICULARES,CAMBIAR CONTRASEÑA,CAMBIAR ALGUN DATO PERSONAL O DARTE DE BAJA.</p>
+            <p>5º)DISPONES DE UNA FRASE DE SEGURIDAD(PUEDES ELEGIR LA QUE QUIERAS) POR SI OLVIDAS TU CONTRASEÑA</p>
+            <p>5º)SI OLVIDAS TU CONTRASEÑA O TU FRASE DE SEGURIDAD PUEDES RESTABLECERLO DESDE LA PANTALLA DONDE INICIAS TU SESIÓN.</p>
+            <p>6º)CUALQUIER OTRA DUDA,TIENE SIEMPRE A DISPOSICIÓN LAS <a id="viasdecontacto"href="">VÍAS DE CONTACTO </a>PARA PODER AYUDARTE EN LO QUE NECESITES.</p>
+            <p id="bienvenido">----------- BIENVENID@ Y DISFRUTA DE LA APLICACIÓN,¡¡MUCHAS GRACIAS!!----------</p>
+        </div>
+        
+        <h3 id="about">ACERCA DE GESTOR DE TAREAS</h3>
+        <div>
+            
+        </div>
+        <h3 id="detalletecnico">CONTACTO / SOPORTE TÉCNICO</h3>
+        <div>
+            <p>
+                SI TIENES CUALQUIER DUDA O INCIDENCIA CON LA APLICACIÓN,TIENES LAS SIGUIENTES VÍAS DE CONTACTO:
+            </p>
+            <p>TELÉFONO:<strong>660692917</strong> </p>
+            <p>EMAIL:<strong>javierapariciogarrido@gmail.com</strong></p>
+        </div>
+    </div>    
+    
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {%if edicion_usuario is defined %}
+        Editar datos de {{user.name}}
+    {%elseif changepassword is defined %}
+        Cambiar contraseña de {{user.name}}
+    {% else %}    
+        Registro de Usuario
+    {%endif%}    
+{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        
+        {%if edicion_usuario is defined %}
+            <h2>EDITAR DATOS DE {{user.name}}</h2>
+        {%elseif changepassword is defined %}
+            <h2>CAMBIAR CONTRASEÑA DE {{user.name}}</h2>
+        {%else%}    
+            <h2>REGISTRO DE USUARIO</h2>
+        {%endif%}
+        
+        
+        {{form_start(form)}}
+        {{form_widget(form)}}
+        {{form_end(form)}}
+        {% if edicion_usuario is defined or changepassword is defined %} 
+            <a  class="btneditcliente" id="volveramisdatos" href="{{path('user_detail',{'id':user.id})}}">ATRAS</a>
+        {%endif%}
+        
+    </div>
+{% endblock %}

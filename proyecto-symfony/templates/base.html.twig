@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        {#LA ETIQUETA META VIEWPORT DE ABAJO ES PARA APLICAR EL RESPONSIVE EN TODOS LOS NAVEGADORES#}
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <title id="title">{% block title %}{% endblock %}</title>
+
+        {#favicon#}
+        <link  rel="icon" type="image/x-icon" href="{{asset('assets/img/favicon5.jpg')}}"/>
+
+
+        {% block stylesheets %}
+            {#Cargo la hoja de estilos para normalizar e intentar que se vea igual en todos navegadores#}
+            <link rel="stylesheet" type="text/css" href="{{asset('assets/css/normalize.css')}}"/>
+            {#Estilos css de jquery ui(plugin de jquery)#}
+            <link rel="stylesheet" type="text/css" href="{{asset('assets/js/jquery-ui/jquery-ui.min.css')}}"/>
+            <link rel="stylesheet" type="text/css" href="{{asset('assets/js/jquery-ui/jquery-ui.theme.min.css')}}"/>
+            <link rel="stylesheet" type="text/css" href="{{asset('assets/js/jquery-ui/jquery-ui.structure.min.css')}}"/>
+        {% endblock %}
+        {% block misestilos %}
+            {#Mis estilos#}
+            <link rel="stylesheet" type="text/css" href="{{asset('assets/css/styles.css')}}"/>
+
+        {% endblock %}
+
+        {% block mijavascript %}
+
+            {#jquery#}
+            <script type="text/javascript" src="{{asset('assets/js/jquery-3.5.1.min.js')}}"></script>
+            {#jquery ui#}
+            <script type="text/javascript" src="{{asset('assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
+            {#Mi javascript#}
+            <script type="text/javascript" src="{{asset('assets/js/main.js')}}" ></script>
+
+        {% endblock %} 
+
+        {% block javascripts %}
+            <!-- Fichero javascript de Libreria en si moment.js -->
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js"></script>
+            <!--Fichero javascript de Traduccion de las fechas de moment js al español -->
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/locale/es.js"></script>
+
+        {% endblock %}
+
+    </head>
+    <body>
+        {%block header %}
+            <div id="header">
+
+                <h1 id="titulo"><a href="{{path('inicio')}}">GESTOR DE TAREAS</a> </h1>
+                <div id="hora">
+                    HOY ES: 
+                </div>
+                <div class="clearfix"></div>
+                {%if app.user is not null %}
+                    <h3 id="nombreusuario">¡¡BIENVENIDO, {{app.user.name ~' '~app.user.surname}}!!</h3>
+
+                {%endif%}
+                <ul id="menu">
+
+                    {% if app.user is not null %}
+                        {% if app.user.enterprise!='' %}    
+                            <li>
+                                <a  id ="todaslastareas" class="subrayado" href="{{path('tasks',{tareasacabadas:'NO',ente:'empresa'})}}" title="Tareas de todos los trabajadores de tu empresa">TAREAS DE TU EMPRESA</a>
+                            </li>
+                        {% endif %}    
+                        <li>
+                            <a id="mistareas"  class="subrayado"  href="{{path('tasks',{tareasacabadas:'NO',ente:'particular'})}}" title="Tus tareas">MIS TAREAS</a>
+                        </li>
+                        <li>
+                            <a class="subrayado" id= "crear_tarea" href="{{path('task_creation')}}" title="Crear una nueva tarea">CREAR TAREA</a>
+                        </li>
+                        <li>
+                            <a id="misdatos" class="subrayado"  href="{{path('user_detail',{'id':app.user.id})}}" title="Ver mis datos personales ">MIS DATOS</a>
+                        <li   id="ayuda"  class="subrayado"  title="Ayuda sobre el funcionamiento de la aplicación">
+                            AYUDA
+                        </li>
+
+                           
+<!--<li class="right">HOLA      {{app.user.name ~' '~app.user.surname}}</li>-->
+                               
+                        <li id="cerrarsesion" title="Cerrar tu sesión">
+                            CERRAR SESION
+                        </li>
+
+
+                    {% else %}
+                        <li>
+                            <a id="iniciarsesion"  class="subrayado"   href="{{path('login')}}" title="Inicia tu sesión introduciendo tu email y contraseña">INICIAR SESIÓN</a>
+                        </li>
+                        <li>
+                            <a id="registro"  class="subrayado" href="{{path('register')}}" title="Regístrate como nuevo usuario,solo con email y eligiendo contraseña">REGISTRATE</a>
+                        </li>
+                        <li id="ayuda" class="subrayado" title="Ayuda sobre la Aplicación en general">
+                            AYUDA
+                        </li>
+                    {% endif %}
+                    <div class="clearfix"></div>    
+                </ul>
+
+
+            </div>    
+        {% endblock %} {#FIN DE LA CABECERA DE TODA LA WEB#}
+        {% block body %}
+            
+        {% endblock %}    
+        
+        {% block prefooter %} 
+            
+            <div class = "subir" id="flecha">
+                <img  title="SUBIR HACIA ARRIBA"src="{{asset('assets/img/flecha_arriba.jpg')}}">   
+            </div>
+            
+        {% endblock %}
+        <div class="clearfix"></div>
+        {% block footer %} {#PIE DE PAGINA #}
+            <footer> 
+
+                <div id="autor">
+                    COPYRIGHT  JAVIER APARICIO GARRIDO  2020&copy;
+                </div>
+                <div id="avisolegal">
+                    <a href="{{path('avisolegal')}}">AVISO LEGAL</a> Y <a href="{{path('privacidad')}}">PRIVACIDAD</a>
+                </div>
+                <div id="ayudapiedepagina">	
+                    <a href="{{path('help')}}">AYUDA</a> 
+                </div>
+                <div id="soportetecnico">	
+                    <a href="">CONTACTO / SOPORTE TÉCNICO</a>
+                </div>	
+
+                <div id="redessociales">	
+                    {#
+                    <a href="" id="instagram"><img src="{{asset('assets/img/Instagram.svg')}}"></a>
+
+
+                    <a href="" id="twitter"><img src="{{asset('assets/img/twitter.svg')}}"></a>
+                    #}
+
+                    <a href="https://www.linkedin.com/in/javier-aparicio-garrido-desarrolladorweb/" target="_blank" id="linkedin"><img src="{{asset('assets/img/Linkedin.svg')}}"></a>
+
+                </div>  
+
+
+            </footer>
+        {% endblock %}            
+
+    </body>
+
+</html>

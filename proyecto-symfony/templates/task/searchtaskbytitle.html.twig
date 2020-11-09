@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Buscar Tarea por Título    
+{% endblock %}
+
+{% block body %}
+    
+    <div class="example-wrapper">
+        
+            <h2>BUSCAR TAREA POR TÍTULO</h2>
+            
+            {# VISUALIZAMOS SI HAY ERROR A LA HORA DE BUSCAR TAREA#}
+            {%for mensaje in app.session.flashbag.get('error') %}
+                    <p class="plazo">{{mensaje}}</p>
+            {% endfor %}
+            
+            
+            <form method="POST" action="{{path('tasks_searchbytitle')}}">
+                <input type="hidden" name="entidad" value="{{ente}}">
+                <label for="title" id="labelfortitlesearch">Título de la Tarea a buscar</label>
+                <input type="text" name="title" id="title" required><br>
+                
+                <input type="submit"  id="buscartareaportitulo" value="BUSCAR">
+            </form>    
+                
+            {%if ente =='empresa'%}
+                <a href="{{path('tasks',{'tareasacabadas':'NO','ente':'empresa'})}}" class="tareas-acabadas" title="Volver a tareas pendientes de mi empresa">VOLVER A TAREAS PENDIENTES DE MI EMPRESA</a>   
+            {%endif%}
+            {%if ente =='particular'%}
+                <a href="{{path('tasks',{'tareasacabadas':'NO','ente':'particular'})}}" class="tareas-acabadas" title="Volver a mis tareas que tengo pendientes">VOLVER A MIS TAREAS PENDIENTES</a>   
+            {%endif%}
+    </div>
+{% endblock %}

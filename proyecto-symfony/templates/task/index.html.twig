@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if tareasacabadas=='NO' and ente=='empresa' %}
+        TAREAS PENDIENTES DE {{app.user.enterprise}} {#CAMBIA AQUI #}
+    {%endif%}    
+    {% if tareasacabadas=='SI' and ente=='empresa'%}
+        TAREAS ACABADAS DE {{app.user.enterprise}}
+    {% endif %}    
+    
+    {% if tareasacabadas=='NO' and ente=='particular' %}
+        TAREAS PENDIENTES DE {{app.user.name}}
+    {%endif%} 
+    
+    {% if tareasacabadas=='SI' and ente=='particular'%}
+        TAREAS ACABADAS DE {{app.user.name}}
+    {% endif %}
+    
+{% endblock %} 
+
+{% block body %}
+      {% if app.user is not null %}  {#SI EXISTE USUARIO LOGADO#}  
+        <div class="example-wrapper">
+                {% if tareasacabadas=='NO' and ente=='empresa'%} 
+                    <h2>TAREAS PENDIENTES DE TOD@S L@S TRABAJADORES DE {{app.user.enterprise}}</h2> 
+                {%endif%}
+                {% if tareasacabadas=='SI' and ente=='empresa'%}
+                    <h2>TAREAS ACABADAS DE TOD@S L@S TRABAJADORES DE {{app.user.enterprise}}</h2>
+                {% endif%}
+                
+                {% if tareasacabadas=='NO' and ente=='particular' %}
+                    <h2>TAREAS PENDIENTES DE {{app.user.name}}</h2>
+                {%endif%}    
+                
+                {% if tareasacabadas=='SI' and ente=='particular'%}
+                    <h2>TAREAS ACABADAS DE {{app.user.name}}</h2>
+                {%endif%}    
+            {#VISUALIZAMOS LA SESION FLASH PARA INFORMAR DE TAREA BORRADA,MODIFICADA O CREADA#}
+            
+                {%for mensaje in app.session.flashbag.get('message') %}
+                    <p class="mensajeflash">{{mensaje}}</p>
+                {% endfor %}
+                
+                 
+                {%for mensaje in app.session.flashbag.get('error') %}
+                    <p class="plazo">{{mensaje}}</p>
+                {% endfor %}
+            
+            {#VISUALIZAMOS MENSAJE FLASH SI HAY TAREA CON PLAZO VENCIDO#}
+            {% for mensaje in app.session.flashbag.get('tareaplazovencido')%}
+                <p class="plazotareavencido">{{mensaje}}</p>
+            {%endfor%}    
+            
+            {% if tasks|length == 0 %}
+                {% if tareasacabadas == 'NO' and ente=='empresa'%}
+                    <strong class="tareaspendientes"> ¡¡NO HAY TAREAS PENDIENTES EN {{app.user.enterprise}}!!</strong>
+                    <br>
+                {%endif%}    
+                {%if tareasacabadas=='SI' and ente=='empresa'%}
+                    <strong class="tareaspendientes"> ¡¡NO HAY TAREAS ACABADAS EN {{app.user.enterprise}}!!</strong>
+                    <br>
+                {%endif%}
+                {% if tareasacabadas=='NO' and ente=='particular' %}
+                    <strong class="tareaspendientes"> ¡¡NO TIENES TAREAS PENDIENTES!!</strong>
+                    <br>
+                {%endif%}
+                    
+                {% if tareasacabadas=='SI' and ente=='particular' %}
+                    <strong>¡¡VAYA,NO TIENES TAREAS ACABADAS!!</strong>
+                    <br>
+                {%endif%}    
+            {%else%} {#SI HAY TAREAS LAS MUESTRA#}
+                
+                {{include('includes/task-list.html.twig')}} <!--INCLUDE CON TABLA DE TAREAS -->
+            {% endif %}
+            
+            {#MUESTRO BOTON PARA VER LAS TAREAS ACABADAS O PENDIENTES DE LA EMPRESA #}
+            <div class="botonesbuscar_tareasacabadas">
+                {%if tareasacabadas=='NO' and ente=='empresa'%}
+                    <a href="{{path('tasks',{tareasacabadas:'SI',ente:'empresa'})}}" id="btn-tareasacabadasempresa" class="tareas-acabadas" title="Ver  Tareas terminadas de la empresa">TAREAS DE LA EMPRESA  ACABADAS</a>   
+                {%endif%}
+                {%if tareasacabadas=='SI' and ente=='empresa'%}
+                    <a  id="btn-volvertareaspendientes" href="{{path('tasks',{tareasacabadas:'NO',ente:'empresa'})}}" class="tareas-acabadas" title="VOLVER A TAREAS PENDIENTES DE LA EMPRESA">VOLVER A TAREAS PENDIENTES DE LA EMPRESA</a>   
+                {% endif %}
+
+                {% if tareasacabadas=='NO' and ente=='particular'%}
+                    <a  id="btn-tareasacabadasparticular" href="{{path('tasks',{tareasacabadas:'SI',ente:'particular'})}}" class="tareas-acabadas" title="Ver Solo las Tareas que has Terminado">VER MIS TAREAS ACABADAS</a>
+                {%endif%}  
+                {% if tareasacabadas=='SI' and ente=='particular'%}
+                    <a id="btn-volvertareaspendientesparticular" href="{{path('tasks',{tareasacabadas:'NO',ente:'particular'})}}" class="tareas-acabadas" title="VOLVER A MIS TAREAS PENDIENTES">VOLVER A MIS TAREAS PENDIENTES </a>   
+                {%endif%}
+
+                {#MUESTRO BOTON DE BÚSQUEDA DE TAREA POR TITULO#}
+                {%if ente=='empresa'%}
+                    <a id="btn-busquedatareaempresa" href="{{path('tasks_viewsearchbytitle',{'ente':'empresa'})}}" class="tareas-acabadas" title="Buscar Tarea por el título">BUSCAR TAREA DE TU EMPRESA POR TÍTULO</a>   
+                {%endif%}
+                {%if ente=='particular'%}
+                    <a id="btn-busquedatareaparticular" href="{{path('tasks_viewsearchbytitle',{'ente':'particular'})}}" class="tareas-acabadas" title="Buscar Tarea por el título">BUSCAR TU TAREA POR TÍTULO</a>   
+                {%endif%}
+            </div>    
+        </div>
+    {%endif%}       
+{% endblock %}

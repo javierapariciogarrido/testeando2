@@ -1,0 +1,47 @@
+{%extends "base.html.twig" %}
+{% block title %}
+   GESTOR DE TAREAS  
+{% endblock %}    
+{% block body %}
+    
+    <div class="example-wrapper">
+        {#MENSAJE DE BIENVENIDA INICIAL EN LA PORTADA SI NO HAY NADIE LOGADO#}
+        {%if app.user is null %}
+            <h2 id="Bienvenida1">
+                ¡¡BIENVENIDO!!, YA PUEDES LLEVAR EL CONTROL DE TUS TAREAS,SE ACABÓ 
+                EL OLVIDAR TUS TRABAJOS :)
+            </h2>
+            
+        {% endif %}
+        
+        
+        
+        {#VISUALIZAMOS LA SESION FLASH PARA INFORMAR DE USUARIO #}
+        {%if error is defined%}
+            {{error}}
+        {%endif%}    
+        {%for mensaje in app.session.flashbag.get('message') %}
+            <p class="mensajeflash">{{mensaje}}</p>
+        {% endfor %}
+        {%for mensaje in app.session.flashbag.get('error')%}{#Mensaje error al borrar tarea#}
+            <p class="errorlogin">{{mensaje}}</p>
+        {% endfor %}
+            
+        <!-- IMAGEN DE LA PORTADA INICIAL -->
+        <img id="portada" src="{{asset('assets/img/portada.jpg')}}"/>
+        
+        {% if  app.user is not null %}
+            {%if app.user.role == 'ROLE_ADMIN' %}
+                <form method="POST" id="formulario" action="{{path('user_fraseseguridadtemporal')}}"> 
+                    <label for="email" >Escribe el email relacionado con la contraseña que quieres restablecer:</label><br>
+                    <input type="text" name="email" id="email" required=""><br><br>
+                    <input type="hidden" name="swiftmailer">
+                    <input type="submit" value="Restablecer Frase de seguridad"id="cambiarfrase">
+                </form>
+            {% endif %} 
+            
+       {% endif %}
+
+    </div>
+    
+{% endblock %}

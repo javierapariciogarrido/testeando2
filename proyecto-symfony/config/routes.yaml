@@ -1,0 +1,140 @@
+#RUTAS DE TAREAS
+inicio:
+    path: /
+    controller: App\Controller\TaskController::portadaapp
+
+#INDICE DE TODAS LAS TAREAS DE LA EMPRESA
+tasks: 
+    path: /todas_las_tareas/{tareasacabadas}/{ente}
+    controller: App\Controller\TaskController::index
+
+#Avance y retroceso de lista de paginas con tareas 
+tasks_paginacionindex:
+    path: /avance_tareas/{ente}/{paginas}/{paginaenlaqueestamos}/{acabado}/{sentido}
+    controller: App\Controller\TaskController::Paginacionindex
+
+
+#Muestra resultados de tareas buscadas por titulo    
+tasks_searchbytitle:
+    path: /búsquedatarea/
+    controller: App\Controller\TaskController::searchByTitle
+#Avance y retroceso en la paginacion de las tareas que hemos buscado por titulo
+tasks_paginacionBusqueda:
+    path: /avanzar_pagina_busquedaportitulo/{paginas}/{paginaenlaqueestamos}/{longitudtareas}/{titulo}/{ente}/{sentido}
+    controller: App\Controller\TaskController::PaginacionBusqueda
+
+#Metodo recoge titulo y si es tarea de empresa o particular y pasamos datos a metodo searchByTitle
+tasks_viewsearchbytitle:
+    path: /buscar_tarea_por_titulo/{ente}
+    controller: App\Controller\TaskController::viewTaskByTitle
+ 
+ 
+task_detail:
+    path: /detalle_tarea/{id}
+    controller: App\Controller\TaskController::detail
+
+task_creation:
+    path: /crear_tarea
+    controller: App\Controller\TaskController::creation
+
+    
+
+task_edit:
+    path: /editar_tarea/{id}
+    controller: App\Controller\TaskController::edit
+
+task_delete:
+    path: /borrar_tarea/{id}
+    controller: App\Controller\TaskController::delete
+
+    
+#RUTAS DE USUARIOS
+    
+login:
+    path: /login
+    controller: App\Controller\UserController::login
+    
+logout: 
+    path: /logout
+
+register:
+    path: /registro
+    controller: App\Controller\UserController::register
+
+
+#Buscamos cliente elegido y mostramos sus datos     
+user_detail:
+    path: /detalle_usuario/{id}
+    controller: App\Controller\UserController::aboutme
+
+# Editar usuario
+user_edit:
+    path: /modificar_usuario/{id}
+    controller: App\Controller\UserController::edit
+
+#Borrar usuario
+user_delete:
+    path: /dardebaja/{id}
+    controller: App\Controller\UserController::delete
+
+   
+#MUESTRA VISTA PARA INTRODUCIR EL EMAIL DEL USUARIO DEL CUAL QUEREMOS RESTABLECER PASSWORD
+user_restablecerpassword:
+    path: /restablecer_contraseña
+    controller: App\Controller\UserController::restablecerpassword
+
+#METODO QUE BUSCA EL EMAIL Y LUEGO PASA EL ID DEL USUARIO Y LA FRASE DE SEGURIDAD A VISTA
+#ELEGIRPASSWORD.HTML.TWIG
+user_searchemail:
+    path: /elige_contraseña
+    controller: App\Controller\UserController::localizaremail
+
+#METODO QUE CAMBIA LA CONTRASEÑA DEL CLIENTE SI FRASE DE SEGURIDAD ESTA OK    
+user_comprobaremail:
+    path: /comprobar-email
+    controller: App\Controller\UserController::comprobaremail
+
+
+
+#METODO SOLO PARA MI COMO ADMINISTRADOR CUANDO ME LOGUE EN PANTALLA PRINCIPAL,ME PERMITE ASIGNAR 
+#FRASE DE SEGURIDAD ALEATORIA AL USUARIO QUE LA SOLICITA 
+user_fraseseguridadtemporal:
+    path: /frase_seguridadtemporal
+    controller: App\Controller\UserController::fraseseguridadtemporal
+
+#LLAMO A VISTA PARA RECOGER LA FRASE DE SEGURIDAD PROVISIONAL QUE LE HEMOS ASIGNADO Y LA QUE 
+#EL CLIENTE QUIERE JUNTO CON EMAIL,Y DESDE ESA VISTA SE LLAMA AL METODO DE ABAJO
+user_entrarenrecuperacionfraseseguridad:
+    path: /inicio_recuperar_frase_seguridad
+    controller: App\Controller\UserController::inicio_recuperarFrase
+    
+    
+#METODO QUE COTEJA FRASE DE SEGURIDAD PROVISIONAL QUE LE HEMOS MANDADO Y SI ES CORRECTA SE 
+#ASIGAN DEFINITIVAMENTE LA FRASE DE SEGURIDAD
+user_recuperarfraseseguridaddefinitiva:
+    path: /recuperar_frase_seguridad_definitiva
+    controller: App\Controller\UserController::recuperarfraseseguridaddefinitiva
+
+
+
+    
+
+#RUTAS DE AYUDA Y PIE DE PAGINA
+help:
+    path: /ayuda
+    controller: App\Controller\HelpController::index
+    
+about:
+    path: /ayuda-sobre-aplicacion
+    controller: App\Controller\HelpController::about
+    
+    
+
+
+avisolegal:
+    path: /aviso_legal
+    controller: App\Controller\HelpController::AvisoLegal
+    
+privacidad:
+    path: /politica_de_privacidad
+    controller: App\Controller\HelpController::PoliticaPrivacidad

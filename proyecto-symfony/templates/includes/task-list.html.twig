@@ -1,0 +1,91 @@
+
+<table>
+    <tr>
+        <th class="tarea">Tarea </th>
+        <th class="prioridad">Prioridad</th>
+        <th class="horas">Horas</th>
+        <th class="previstofinalizar">Previsto Finalizar</th>
+        <th class="acciones">Acciones</th>
+    </tr>
+        {%for task in tasks%}
+            {% set fechacoincide=false %} {#interruptor que avisa si la tarea esta fuera de plazo#}
+            {% if fechasrojas is defined %}
+                {% for fecha  in fechasrojas%} {#recorremos array de fechas fuera de plazo#}   
+                    {% if  fecha is same as(task.fechafin) %} {#Si fecha tara == a fecha fuera plazo #}
+                        {% set fechacoincide=true %} {#Marcamos interruptor de que esa tarea esta fuera plazo#}          
+                    {% endif %}
+                {% endfor%}
+            {% endif %}    
+            {% if fechacoincide  and tareasacabadas=='NO' and ente=='particular'%}
+                <tr class="fecharoja"> {#Ponemos clase que pinta fila de rojo#}
+            {%else%}
+                <tr>
+            {%endif%}
+        
+
+            <td class="titulo">{{task.title}}</td>
+            <td class="prioridad">
+                {%if task.priority == 'high'%}
+                    Alta
+                {% endif%}
+                {%if task.priority == 'medium'%}
+                    Media
+                {% endif%}
+                {%if task.priority == 'low'%}
+                    Baja
+                {% endif%}
+            </td>
+            <td>{{task.hours}}</td>
+
+            <td class="previsto">{{task.fechafin}}</td>
+
+            <td class="buttons">
+                <a href="{{path('task_detail',{'id':task.id})}}" class="btn-show">Ver</a>
+                
+                {%if app.user is not null and app.user.id == task.user_id%}
+                    <a href="{{path('task_edit',{'id':task.id})}}" class="btn-edit">Editar</a>
+                    <button id="btn-delete" class="botonborrar" name="{{task.id}}">Borrar</button>
+
+                {% endif %}    
+ 
+            </td>
+        </tr>
+
+    {% endfor %}
+
+</table>
+    
+{% if busqueda is defined %}
+{#LETRERO DE LA CANTIDAD DE RESULTADOS DE LA BÚSQUEDA#}
+    <p class="resultadobusqueda">Resultado: {{longitudtareas}} Coincidencia/as en la búsqueda</p>
+{%endif%}    
+
+
+{#NUMEROS DE LAS PAGINAS#}
+<p class="numeropagina">PÁGINA {{paginaenlaqueestamos}}/{{totalpaginas}}</p>
+
+<div id="botones-paginacion">
+    {#SIMBOLO DE RETROCEDER TAREA #}  
+    {%if pagina >0%}
+        {%if busqueda is defined%}
+            <a class="retrocederpagina" href="{{path('tasks_paginacionBusqueda',{'paginas':pagina,'paginaenlaqueestamos':paginaenlaqueestamos,'longitudtareas':longitudtareas,'titulo':titulo,'ente':ente,'sentido':'retroceder'})}}"><<  PÁGINA ANTERIOR</a>
+        {%else%}    
+            <a class="retrocederpagina" href="{{path('tasks_paginacionindex',{'paginas':pagina,'paginaenlaqueestamos':paginaenlaqueestamos,'acabado':tareasacabadas,'ente':ente,'sentido':'retroceder'})}}"><<  PÁGINA ANTERIOR</a>
+        {%endif%}    
+    {%endif%}
+
+    
+    {#AVANCE DE PAGINACION SOLO APARECE CUANDO EL TOTAL DE TAREAS DEL USUARIO ES MAYOR AL NUMERO
+    DE PAGINA ACTUAL MAS 10(QUE SON LAS TAREAS QUE TENEMOS POR PANTALLA)#} 
+    {%set comprobaravancepaginas=pagina+10 %}
+
+    {%if busqueda is defined %}
+        {% if longitudtareas >comprobaravancepaginas %}
+            <a class="avanzarpagina" href="{{path('tasks_paginacionBusqueda',{'paginas':pagina,'paginaenlaqueestamos':paginaenlaqueestamos,'longitudtareas':longitudtareas,'titulo':titulo,'ente':ente,'sentido':'avanzar'})}}">PÁGINA SIGUIENTE  >></a>
+        {%endif%}
+    {%else%}    
+        {% if alltasks|length >comprobaravancepaginas %}
+            <a class="avanzarpagina" href="{{path('tasks_paginacionindex',{'paginas':pagina,'paginaenlaqueestamos':paginaenlaqueestamos,'acabado':tareasacabadas,'ente':ente,'sentido':'avanzar'})}}">PÁGINA SIGUIENTE  >></a>
+        {%endif%}
+    {%endif%}
+</div>    

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {%if ente=='particular' %}
+        RESULTADOS DE TUS TAREAS CON EL TITULO {{titulo}}      
+    {%endif%}
+    {%if ente == 'empresa'%}
+        RESULTADOS DE TAREAS EN LA EMPRESA CON EL TITULO {{titulo}}
+    {%endif%}    
+    
+{% endblock %} 
+
+{% block body %}
+        
+        <div class="example-wrapper">
+                {#
+                <h2>BUSQUEDA DE TAREA POR TITULO</h2> 
+                <h4 class="resultadobusqueda">Resultados de la búsqueda por título: {{titulo}} </h4>
+                #}
+                {%if ente=='particular' %}
+                    <h2>RESULTADO DE BÚSQUEDA ENTRE TUS TAREAS CON EL TITULO {{titulo}}</h2>      
+                {%endif%}
+                {%if ente == 'empresa'%}
+                    <h2>TAREAS ENCONTRADAS EN LA EMPRESA CON EL TITULO {{titulo}}</h2>
+                {%endif%}
+            
+            
+            {% if tasks|length == 0 %}
+                <p class="tareaspendientes"> ¡¡NO HAY TAREAS CON EL TÍTULO BUSCADO!!</p><br>
+                    
+            {%else%} {#SI HAY TAREAS LAS MUESTRA#}
+                {{include('includes/task-list.html.twig',{'busqueda':true})}}
+            {% endif %}
+            {#MUESTRO BOTON DE HACER OTRA BÚSQUEDA DE TAREA POR TITULO#}
+            <a href="{{path('tasks_viewsearchbytitle',{'ente':ente})}}" class="tareas-acabadas" title="Buscar Tarea por el título">REALIZAR OTRA BÚSQUEDA</a>
+        </div>
+           
+{% endblock %}

@@ -1,0 +1,33 @@
+{%extends 'base.html.twig'%}
+{% block title %}
+    Asignación frase de seguridad Definitiva
+{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        {%for mensaje in app.session.flashbag.get('message') %}
+            <p class="mensajeflash">{{mensaje}}</p>
+        {% endfor %}
+        {%for mensaje in app.session.flashbag.get('error')%}{#Mensaje error al borrar tarea#}
+            <p class="errorlogin">{{mensaje}}</p>
+        {% endfor %}
+        
+        <h2>Elegir Frase de seguridad Definitiva</h2>
+        
+        <form  id="formulariofraseseguridaddefinitiva" method = "POST" action="{{path('user_recuperarfraseseguridaddefinitiva')}}">
+            <label for="email">ESCRIBE TU EMAIL: </label>
+            <input  class="inputselegirfraseseguridad" type="email" name="email" required="">
+            
+            <label for="fraseprovisional">ESCRIBE LA FRASE DE SEGURIDAD PROVISIONAL QUE TE HEMOS DADO DESDE SOPORTE TÉCNICO:</label>
+            <input class="inputselegirfraseseguridad"  type="password" name="fraseprovisional" required="">
+            
+            <label for="frasedefinitiva">ESCRIBE LA FRASE DE SEGURIDAD DEFINITIVA QUE QUIERES TENER:</label>
+            <input class="inputselegirfraseseguridad" type="password" name="frasedefinitiva" required=""> <br>
+            
+            <input type="submit" value="GUARDAR">
+        </form>    
+        
+        
+    </div>
+{% endblock %}
+

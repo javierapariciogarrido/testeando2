@@ -1,0 +1,65 @@
+{%extends 'base.html.twig'%}
+
+{% block  misestilos %}
+        {#Mis estilos#}
+        
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/stylesabout.css')}}"/>
+            
+{% endblock %}
+{% block stylesheets %}
+    
+{% endblock %}    
+{% block javascripts %}
+{% endblock %}   
+{% block mijavascript %}
+    {#jquery#}
+    <script type="text/javascript" src="{{asset('assets/js/jquery-3.5.1.min.js')}}"></script>
+    {#jquery ui#}
+    <script type="text/javascript" src="{{asset('assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
+    
+    {#Mi javascript solo para el menu de ayuda#}
+    <script type="text/javascript" src="{{asset('assets/js/ayuda.js')}}"></script>
+{% endblock %}    
+
+
+
+{% block title %}
+    ACERCA DE GESTOR DE TAREAS
+{% endblock %}
+{%block header %}
+    <H2>ACERCA DE GESTOR DE TAREAS</H2>
+{%endblock%}    
+
+{% block body %}
+        
+            <img id="imagenabout" src="{{asset('assets/img/imagen_about.jpg')}}">
+
+            <div id="contenidoabout">
+                <p id="descripcionabout">GESTIONA TUS TAREAS PENDIENTES O ACABADAS.</p>
+                <p>VERSIÓN:1.0</p>
+                <p>DESARROLLADOR:JAVIER APARICIO GARRIDO</p>
+                <p>Copyright &copy; 2020</p>               
+                <p id="tecnologias">APLICACIÓN CON DISEÑO ADAPTABLE A TODO TIPO DE PANTALLAS.<br>
+                 TECNOLOGÍAS USADAS:   
+                </p>
+                <img  title="HTML5" id="html5" src="{{asset('assets/img/html5.png')}}">
+                <img  title="CSS3"  id="css3" src="{{asset('assets/img/css3.jpg')}}">
+                <img  title="JAVASRIPT" id="javascript" src="{{asset('assets/img/JS-logo.png')}}">
+                <img title="JQUERY" id="jquery" src="{{asset('assets/img/jquery-logo.png')}}">
+                <img title ="PHP"  id="php" src="{{asset('assets/img/php.png')}}">
+                <img title="MYSQL"  id="mysql" src="{{asset('assets/img/mysql.jpg')}}">
+                <img title="SYMFONY"   id="symfony" src="{{asset('assets/img/symfony.png')}}">
+            </div>
+            
+            <div>
+                <button class="cerrarabout">CERRAR</button>
+            </div>
+{%endblock%}   
+
+{%block prefooter %}
+{% endblock %}
+{%block footer %}
+    
+{% endblock %}
+
+

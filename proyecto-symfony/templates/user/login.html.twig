@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Login de Usuarios {% endblock %}
+{% block body %}
+    <div class="example-wrapper">
+        
+            <h2>LOGIN DE USUARIOS</h2>
+            <!-- Compruebo si hay error de logado -->
+            {% if error %}
+                <div  class="errorlogin">
+                    {#{{error.messagekey|trans(error.messageData,'security')}}#}
+                    ¡¡EMAIL O CONTRASEÑA INCORRECTOS!!
+                </div>    
+            {% endif %}    
+            {%for mensaje in app.session.flashbag.get('message')%}
+                <p class="mensajeflash">{{mensaje}}</p>
+            {% endfor %}
+            {%for mensaje in app.session.flashbag.get('error')%}
+                <p class="errorlogin">{{mensaje}}</p>
+            {% endfor %}
+            <form action="{{path('login')}}" method="POST">
+                <label for="username">Email </label>
+                <input type="email" id="username" name="_username" value="{{last_username}}"/>
+
+                <label for="password"> Contraseña </label>
+                <input type="password" id="password"  name="_password"/>
+                <br/>
+                
+                
+                <input  id="boton-logar" type="submit" value="Entrar"/>
+            </form>
+                
+            <h6 class="restablecerpassword">
+                    ¿Has olvidado tu contraseña?<br>Click <a id="restablecerpasswordenlace" href="{{path('user_restablecerpassword')}}">AQUI </a>PARA RESTABLECER UNA NUEVA.
+            </h6>
+            <h6 class="restablecerpassword">
+                ¿Has olvidado tu frase de seguridad?<br>Ponte en contacto con <a id="restablecerfrase"href="">SOPORTE TÉCNICO </a> y te daremos una frase de seguridad temporal.<br>
+                Una vez ya tengas la frase de seguridad temporal,pulsa <a id="cambiarfraseseguridad" href="{{path('user_entrarenrecuperacionfraseseguridad')}}">AQUI</a> para cambiarla y poner la que quieras.
+            </h6>    
+            
+    </div>    
+    
+{% endblock %}    
